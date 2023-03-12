@@ -120,7 +120,7 @@ export function drawLine(position1: Point, position2: Point) {
 }
 
 export function drawText(text: string, position: Point, options?: TextOptions): TextReturn {
-    py.callSync(
+    const bbox = py.callSync(
         pyModule,
         'draw_text',
         [position.x, position.y],
@@ -128,9 +128,9 @@ export function drawText(text: string, position: Point, options?: TextOptions): 
         options?.color ? [options.color.r, options.color.g, options.color.b] : null,
         options?.font,
         options?.size,
-    );
+    ) as number[];
 
-    return { size: { w: 0, h: 0 }, position: { x: 0, y: 0 } };
+    return { size: { w: bbox[2], h: bbox[3] }, position: { x: bbox[0], y: bbox[1] } };
 }
 export function clear(color?: Color) {
     if (color) {
