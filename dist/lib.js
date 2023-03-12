@@ -59,7 +59,8 @@ function drawLine(position1, position2) {
 exports.drawLine = drawLine;
 function drawText(text, position, options) {
     const bbox = node_calls_python_1.interpreter.callSync(pyModule, 'draw_text', [position.x, position.y], text, options?.color ? [options.color.r, options.color.g, options.color.b] : null, options?.font, options?.size);
-    return { size: { w: bbox[2], h: bbox[3] }, position: { x: bbox[0], y: bbox[1] } };
+    // return { size: { w: bbox[2], h: bbox[3] }, position: { x: bbox[0], y: bbox[1] } };
+    return { size: { w: bbox[2], h: bbox[3] }, position };
 }
 exports.drawText = drawText;
 function clear(color) {

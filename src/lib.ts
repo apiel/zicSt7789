@@ -130,7 +130,8 @@ export function drawText(text: string, position: Point, options?: TextOptions): 
         options?.size,
     ) as number[];
 
-    return { size: { w: bbox[2], h: bbox[3] }, position: { x: bbox[0], y: bbox[1] } };
+    // return { size: { w: bbox[2], h: bbox[3] }, position: { x: bbox[0], y: bbox[1] } };
+    return { size: { w: bbox[2], h: bbox[3] }, position };
 }
 export function clear(color?: Color) {
     if (color) {
