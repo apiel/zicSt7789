@@ -34,8 +34,8 @@ def draw_rect(xy, fill=None, outline=None, width=1):
 def draw_text(*args, **kwargs):
     draw.text(*args, **kwargs)
 
+def draw_line(xy, fill=None, width=0, joint=None):
+    draw.line(xy, (fill if fill == None else tuple(fill)), width, joint)
+
 def draw_point(*args, **kwargs):
     draw.point(*args, **kwargs)
-
-def draw_line(*args, **kwargs):
-    draw.line(*args, **kwargs)

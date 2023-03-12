@@ -107,7 +107,16 @@ export function drawRect(rect: Rect) {
 }
 
 export function drawPoint(position: Point) {}
-export function drawLine(position1: Point, position2: Point) {}
+
+export function drawLine(position1: Point, position2: Point) {
+    py.callSync(
+        pyModule,
+        'draw_line',
+        [position1.x, position1.y, position2.x, position2.y],
+        [color.r, color.g, color.b],
+    );
+}
+
 export function drawText(text: string, position: Point, options?: TextOptions): TextReturn {
     return { size: { w: 0, h: 0 }, position: { x: 0, y: 0 } };
 }

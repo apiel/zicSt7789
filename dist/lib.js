@@ -51,7 +51,9 @@ function drawRect(rect) {
 exports.drawRect = drawRect;
 function drawPoint(position) { }
 exports.drawPoint = drawPoint;
-function drawLine(position1, position2) { }
+function drawLine(position1, position2) {
+    node_calls_python_1.interpreter.callSync(pyModule, 'draw_line', [position1.x, position1.y, position2.x, position2.y], [color.r, color.g, color.b]);
+}
 exports.drawLine = drawLine;
 function drawText(text, position, options) {
     return { size: { w: 0, h: 0 }, position: { x: 0, y: 0 } };
