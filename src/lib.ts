@@ -106,7 +106,9 @@ export function drawRect(rect: Rect) {
     );
 }
 
-export function drawPoint(position: Point) {}
+export function drawPoint(position: Point) {
+    py.callSync(pyModule, 'draw_point', [position.x, position.y], [color.r, color.g, color.b]);
+}
 
 export function drawLine(position1: Point, position2: Point) {
     py.callSync(
@@ -120,4 +122,20 @@ export function drawLine(position1: Point, position2: Point) {
 export function drawText(text: string, position: Point, options?: TextOptions): TextReturn {
     return { size: { w: 0, h: 0 }, position: { x: 0, y: 0 } };
 }
-export function clear(color?: Color) {}
+export function clear(color?: Color) {
+    if (color) {
+        py.callSync(
+            pyModule,
+            'draw_rect',
+            [screen.position.x, screen.position.y, screen.size.w, screen.size.h],
+            [color.r, color.g, color.b],
+        );
+    } else {
+        py.callSync(
+            pyModule,
+            'draw_rect',
+            [screen.position.x, screen.position.y, screen.size.w, screen.size.h],
+            [0, 0, 0],
+        );
+    }
+}

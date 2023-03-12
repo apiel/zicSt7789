@@ -37,5 +37,5 @@ def draw_text(*args, **kwargs):
 def draw_line(xy, fill=None, width=0, joint=None):
     draw.line(xy, (fill if fill == None else tuple(fill)), width, joint)
 
-def draw_point(*args, **kwargs):
-    draw.point(*args, **kwargs)
+def draw_point(xy, fill=None):
+    draw.point(xy, (fill if fill == None else tuple(fill)))
