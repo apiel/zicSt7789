@@ -49,7 +49,9 @@ function drawRect(rect) {
     node_calls_python_1.interpreter.callSync(pyModule, 'draw_rect', [rect.position.x, rect.position.y, rect.size.w, rect.size.h], null, [color.r, color.g, color.b]);
 }
 exports.drawRect = drawRect;
-function drawPoint(position) { }
+function drawPoint(position) {
+    node_calls_python_1.interpreter.callSync(pyModule, 'draw_point', [position.x, position.y], [color.r, color.g, color.b]);
+}
 exports.drawPoint = drawPoint;
 function drawLine(position1, position2) {
     node_calls_python_1.interpreter.callSync(pyModule, 'draw_line', [position1.x, position1.y, position2.x, position2.y], [color.r, color.g, color.b]);
@@ -59,5 +61,12 @@ function drawText(text, position, options) {
     return { size: { w: 0, h: 0 }, position: { x: 0, y: 0 } };
 }
 exports.drawText = drawText;
-function clear(color) { }
+function clear(color) {
+    if (color) {
+        node_calls_python_1.interpreter.callSync(pyModule, 'draw_rect', [screen.position.x, screen.position.y, screen.size.w, screen.size.h], [color.r, color.g, color.b]);
+    }
+    else {
+        node_calls_python_1.interpreter.callSync(pyModule, 'draw_rect', [screen.position.x, screen.position.y, screen.size.w, screen.size.h], [0, 0, 0]);
+    }
+}
 exports.clear = clear;
