@@ -32,7 +32,7 @@ def draw_rect(xy, fill=None, outline=None, width=1):
     draw.rectangle(xy, (fill if fill == None else tuple(fill)), (outline if outline == None else tuple(outline)), width)
 
 def draw_text(xy, text, fill=None, fontPath=None, size=None):
-    font = "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf" if fontPath == None else ImageFont.truetype(fontPath, size if size != None else 16) 
+    font = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf" if fontPath == None else fontPath, size if size != None else 16) 
     return draw.text(xy, text, ((0, 0, 0) if fill == None else tuple(fill)), font)
 
 def draw_line(xy, fill=None, width=0, joint=None):
