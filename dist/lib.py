@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-from PIL import Image, ImageDraw
+from PIL import Image, ImageDraw, ImageFont
 from ST7789 import ST7789
 
 SPI_SPEED_MHZ = 80
@@ -31,8 +31,9 @@ def render():
 def draw_rect(xy, fill=None, outline=None, width=1):
     draw.rectangle(xy, (fill if fill == None else tuple(fill)), (outline if outline == None else tuple(outline)), width)
 
-def draw_text(*args, **kwargs):
-    draw.text(*args, **kwargs)
+def draw_text(xy, text, fill=None, fontPath=None, size=16, anchor=None, spacing=4, align='left', direction=None, features=None, language=None, stroke_width=0, stroke_fill=None, embedded_color=False):
+    font = "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf" if fontPath == None else ImageFont.truetype(fontPath, size) 
+    return draw.text(xy, text, (fill if fill == None else tuple(fill)), font, anchor, spacing, align, direction, features, language, stroke_width, (stroke_fill if stroke_fill == None else tuple(stroke_fill)), embedded_color)
 
 def draw_line(xy, fill=None, width=0, joint=None):
     draw.line(xy, (fill if fill == None else tuple(fill)), width, joint)

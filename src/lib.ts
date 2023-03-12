@@ -120,6 +120,16 @@ export function drawLine(position1: Point, position2: Point) {
 }
 
 export function drawText(text: string, position: Point, options?: TextOptions): TextReturn {
+    py.callSync(
+        pyModule,
+        'draw_text',
+        [position.x, position.y],
+        text,
+        options?.color,
+        options?.font,
+        options?.size,
+    );
+
     return { size: { w: 0, h: 0 }, position: { x: 0, y: 0 } };
 }
 export function clear(color?: Color) {

@@ -58,6 +58,7 @@ function drawLine(position1, position2) {
 }
 exports.drawLine = drawLine;
 function drawText(text, position, options) {
+    node_calls_python_1.interpreter.callSync(pyModule, 'draw_text', [position.x, position.y], text, options?.color, options?.font, options?.size);
     return { size: { w: 0, h: 0 }, position: { x: 0, y: 0 } };
 }
 exports.drawText = drawText;
