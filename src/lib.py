@@ -29,7 +29,7 @@ def render():
     st7789.display(image)
 
 def draw_rect(xy, fill=None, outline=None, width=1):
-    draw.rectangle(xy, tuple(fill), tuple(outline), width)
+    draw.rectangle(xy, (fill if fill == None else tuple(fill)), (outline if outline == None else tuple(outline)), width)
 
 def draw_text(*args, **kwargs):
     draw.text(*args, **kwargs)
