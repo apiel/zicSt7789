@@ -66,7 +66,7 @@ const screen: Screen = {
     position: { x: 0, y: 0 },
 };
 
-const pyModule = py.importSync('./lib.py');
+const pyModule = py.importSync(`${__dirname}/lib.py`);
 let color: Color = { r: 255, g: 255, b: 255 };
 
 export const getScreen = () => screen;
@@ -101,7 +101,7 @@ export function drawRect(rect: Rect) {
         pyModule,
         'draw_rect',
         [rect.position.x, rect.position.y, rect.size.w, rect.size.h],
-        undefined,
+        null,
         [color.r, color.g, color.b],
     );
 }

@@ -6,7 +6,7 @@
   "types": "dist/lib.d.ts",
   "scripts": {
     "test": "ts-node src/main.ts",
-    "build": "tsc"
+    "build": "rm -rf dist && tsc && cp src/lib.py dist/lib.py"
   },
   "gypfile": true,
   "dependencies": {

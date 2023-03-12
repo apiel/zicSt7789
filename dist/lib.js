@@ -18,7 +18,7 @@ const screen = {
     size: { w: 240, h: 240 },
     position: { x: 0, y: 0 },
 };
-const pyModule = node_calls_python_1.interpreter.importSync('./lib.py');
+const pyModule = node_calls_python_1.interpreter.importSync(`${__dirname}/lib.py`);
 let color = { r: 255, g: 255, b: 255 };
 const getScreen = () => screen;
 exports.getScreen = getScreen;
@@ -46,7 +46,7 @@ function drawFilledRect(rect) {
 }
 exports.drawFilledRect = drawFilledRect;
 function drawRect(rect) {
-    node_calls_python_1.interpreter.callSync(pyModule, 'draw_rect', [rect.position.x, rect.position.y, rect.size.w, rect.size.h], undefined, [color.r, color.g, color.b]);
+    node_calls_python_1.interpreter.callSync(pyModule, 'draw_rect', [rect.position.x, rect.position.y, rect.size.w, rect.size.h], null, [color.r, color.g, color.b]);
 }
 exports.drawRect = drawRect;
 function drawPoint(position) { }
