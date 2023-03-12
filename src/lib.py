@@ -33,7 +33,7 @@ def draw_rect(xy, fill=None, outline=None, width=1):
 
 def draw_text(xy, text, fill=None, fontPath=None, size=None, anchor=None, spacing=4, align='left', direction=None, features=None, language=None, stroke_width=0, stroke_fill=None, embedded_color=False):
     font = "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf" if fontPath == None else ImageFont.truetype(fontPath, size if size != None else 16) 
-    return draw.text(xy, text, (fill if fill == None else tuple(fill)), font, anchor, spacing, align, direction, features, language, stroke_width, (stroke_fill if stroke_fill == None else tuple(stroke_fill)), embedded_color)
+    # return draw.text(xy, text, (fill if fill == None else tuple(fill)), font, anchor, spacing, align, direction, features, language, stroke_width, (stroke_fill if stroke_fill == None else tuple(stroke_fill)), embedded_color)
 
 def draw_line(xy, fill=None, width=0, joint=None):
     draw.line(xy, (fill if fill == None else tuple(fill)), width, joint)
