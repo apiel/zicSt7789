@@ -33,7 +33,8 @@ def draw_rect(xy, fill=None, outline=None, width=1):
 
 def draw_text(xy, text, fill=None, fontPath=None, size=None):
     font = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf" if fontPath == None else fontPath, size if size != None else 16) 
-    return draw.text(xy, text, ((255, 255, 255) if fill == None else tuple(fill)), font)
+    draw.text(xy, text, ((255, 255, 255) if fill == None else tuple(fill)), font)
+    return draw.textbbox(xy, text, font)
 
 def draw_line(xy, fill=None, width=0, joint=None):
     draw.line(xy, (fill if fill == None else tuple(fill)), width, joint)
