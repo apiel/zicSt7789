@@ -125,7 +125,7 @@ export function drawText(text: string, position: Point, options?: TextOptions): 
         'draw_text',
         [position.x, position.y],
         text,
-        options?.color,
+        options?.color ? [options.color.r, options.color.g, options.color.b] : null,
         options?.font,
         options?.size,
     );
