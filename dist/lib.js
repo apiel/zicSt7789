@@ -41,12 +41,20 @@ function setColor(_color) {
     color = _color;
 }
 exports.setColor = setColor;
+function getRect(rect) {
+    return [
+        rect.position.x,
+        rect.position.y,
+        rect.position.x + rect.size.w,
+        rect.position.y + rect.size.h,
+    ];
+}
 function drawFilledRect(rect) {
-    node_calls_python_1.interpreter.callSync(pyModule, 'draw_rect', [rect.position.x, rect.position.y, rect.size.w, rect.size.h], [color.r, color.g, color.b]);
+    node_calls_python_1.interpreter.callSync(pyModule, 'draw_rect', getRect(rect), [color.r, color.g, color.b]);
 }
 exports.drawFilledRect = drawFilledRect;
 function drawRect(rect) {
-    node_calls_python_1.interpreter.callSync(pyModule, 'draw_rect', [rect.position.x, rect.position.y, rect.size.w, rect.size.h], null, [color.r, color.g, color.b]);
+    node_calls_python_1.interpreter.callSync(pyModule, 'draw_rect', getRect(rect), null, [color.r, color.g, color.b]);
 }
 exports.drawRect = drawRect;
 function drawPoint(position) {
@@ -65,10 +73,10 @@ function drawText(text, position, options) {
 exports.drawText = drawText;
 function clear(color) {
     if (color) {
-        node_calls_python_1.interpreter.callSync(pyModule, 'draw_rect', [screen.position.x, screen.position.y, screen.size.w, screen.size.h], [color.r, color.g, color.b]);
+        node_calls_python_1.interpreter.callSync(pyModule, 'draw_rect', getRect(screen), [color.r, color.g, color.b]);
     }
     else {
-        node_calls_python_1.interpreter.callSync(pyModule, 'draw_rect', [screen.position.x, screen.position.y, screen.size.w, screen.size.h], [0, 0, 0]);
+        node_calls_python_1.interpreter.callSync(pyModule, 'draw_rect', getRect(screen), [0, 0, 0]);
     }
 }
 exports.clear = clear;

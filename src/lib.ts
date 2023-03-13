@@ -87,11 +87,20 @@ export function setColor(_color: Color) {
     color = _color;
 }
 
+function getRect(rect: Rect) {
+    return [
+        rect.position.x,
+        rect.position.y,
+        rect.position.x + rect.size.w,
+        rect.position.y + rect.size.h,
+    ];
+}
+
 export function drawFilledRect(rect: Rect) {
     py.callSync(
         pyModule,
         'draw_rect',
-        [rect.position.x, rect.position.y, rect.size.w, rect.size.h],
+        getRect(rect),
         [color.r, color.g, color.b],
     );
 }
@@ -100,7 +109,7 @@ export function drawRect(rect: Rect) {
     py.callSync(
         pyModule,
         'draw_rect',
-        [rect.position.x, rect.position.y, rect.size.w, rect.size.h],
+        getRect(rect),
         null,
         [color.r, color.g, color.b],
     );
@@ -138,14 +147,14 @@ export function clear(color?: Color) {
         py.callSync(
             pyModule,
             'draw_rect',
-            [screen.position.x, screen.position.y, screen.size.w, screen.size.h],
+            getRect(screen),
             [color.r, color.g, color.b],
         );
     } else {
         py.callSync(
             pyModule,
             'draw_rect',
-            [screen.position.x, screen.position.y, screen.size.w, screen.size.h],
+            getRect(screen),
             [0, 0, 0],
         );
     }
